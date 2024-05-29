@@ -7,10 +7,12 @@ const { isOwner } = require("../middleware/isOwner");
 
 // POST /ads
 router.post("/ads", isAuthenticated, (req, res, next) => {
-  const userId = req.payload._id;
+  // Extract user ID from the request payload
+  const userId = req.payload._id;     
+  // Associate the user ID with the ad being created
   req.body.author = userId;
   console.log("Author:", userId);
-
+  // Create the ad in the database
   Ad.create(req.body)
     .then((newAd) => {
       res.status(201).json(newAd);
