@@ -5,8 +5,7 @@ module.exports = (app) => {
   });
 
   app.use((err, req, res, next) => {
-    // whenever you call next(err), this middleware will handle the error
-    // always logs the error
+    // whenever call next(err), this middleware will handle the error
     console.error("ERROR", req.method, req.path, err);
 
     // only render if the error ocurred before sending the response

@@ -1,10 +1,6 @@
 const { Schema, model, default: mongoose } = require("mongoose");
 
 const adSchema = new Schema({
-  posterName: {
-    type: String,
-    required: true,
-  },
   businessIdea: {
     type: String,
     required: true,

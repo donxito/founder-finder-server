@@ -1,7 +1,5 @@
 const Ad = require("../models/Ad.model");
 
-
-
 const isOwner = async (req, res, next) => {
     const userId = req.payload._id; 
 
@@ -19,7 +17,7 @@ const isOwner = async (req, res, next) => {
 
     try {
         if (adId) {
-            const event = await Event.findById(adId);
+            const event = await Ad.findById(adId);
             if (!event) {
                 return res.status(404).json({ message: "Ad not found" });
             }

@@ -23,7 +23,6 @@ router.post("/ads", isAuthenticated, (req, res, next) => {
 });
 
 // GET /ads
-
 router.get("/ads", (req, res, next) => {
   Ad.find({})
     .populate("author")
@@ -37,9 +36,11 @@ router.get("/ads", (req, res, next) => {
 });
 
 // GET /ads/:adId
-
 router.get("/ads/:adId", (req, res, next) => {
+
   const { adId } = req.params;
+
+  console.log("Ad ID recieved from backend:", adId);
 
   Ad.findById(adId)
     .populate("author")

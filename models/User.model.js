@@ -22,11 +22,6 @@ const userSchema = new Schema(
       type: String,
       default: "I am using Founder Finder.",
     },
-    username: {
-      type: String,
-      unique: true,
-      sparse: true,  // Allow unique null values
-    },
     phoneNumber: {
       type: String,
       unique: true,

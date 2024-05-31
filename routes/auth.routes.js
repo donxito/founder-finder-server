@@ -1,19 +1,19 @@
 const express = require("express");
 const router = express.Router();
 
-// ℹ️ Handles password encryption
+//password encryption
 const bcrypt = require("bcryptjs");
 
-// ℹ️ Handles password encryption
+// password encryption
 const jwt = require("jsonwebtoken");
 
-// Require the User model in order to interact with the database
+// User model in order to interact with the database
 const User = require("../models/User.model");
 
 // Require necessary (isAuthenticated) middleware in order to control access to specific routes
 const { isAuthenticated } = require("../middleware/jwt.middleware.js");
 
-// How many rounds should bcrypt run the salt (default - 10 rounds)
+// How many rounds should bcryptjs run the salt 
 const saltRounds = 10;
 
 // POST /signup  - Creates a new user in the database
