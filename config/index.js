@@ -1,6 +1,6 @@
 // access to the `body` property in requests
 const express = require("express");
-
+const passport = require("passport");
 // log messagesin the terminal as requests are coming in
 const logger = require("morgan");
 
@@ -14,6 +14,14 @@ const cors = require("cors");
 const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
 
 // Middleware configuration
+
+module.exports = function (app) {
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
+
+  require("./passport-config")(passport);
+
+}
 module.exports = (app) => {
   // Because this will be hosted on a server that will accept requests from outside and it will be hosted ona server with a `proxy`, express needs to know that it should trust that setting.
   app.set("trust proxy", 1);

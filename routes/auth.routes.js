@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
+
+require("../config/passport-config.js")
 
 //password encryption
 const bcrypt = require("bcryptjs");
@@ -12,6 +15,8 @@ const User = require("../models/User.model");
 
 // Require necessary (isAuthenticated) middleware in order to control access to specific routes
 const { isAuthenticated } = require("../middleware/jwt.middleware.js");
+
+const { generateJWTToken } = require("../middleware/auth.controller.js"); 
 
 // How many rounds should bcryptjs run the salt 
 const saltRounds = 10;
@@ -105,5 +110,34 @@ router.get("/verify", isAuthenticated, (req, res, next) => {
   // Send back the token payload object containing the user data
   res.status(200).json(req.payload);
 });
+
+
+// Google OAuth
+
+// Route to start Google OAuth authentication
+router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+
+router.get(
+  "/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login", session: false }),
+  (req, res) => {
+    // Successful authentication, generate JWT token
+    const token = generateJWTToken(req.user); // Assuming req.user contains user info
+    res.redirect(`/auth/google/success?token=${token}`); // Redirect with JWT token
+  }
+);
+
+router.get("/google/success", (req, res) => {
+  const token = req.query.token;
+  if (token) {
+    // Successful authentication, redirect home with token.
+    res.redirect(`${process.env.ORIGIN}`);
+    console.log(token);
+  } else {
+    res.status(400).send("Token not found");
+  }
+});
+
+
 
 module.exports = router;

@@ -12,7 +12,6 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      required: [true, "Password is required."],
     },
     name: {
       type: String,
@@ -26,13 +25,19 @@ const userSchema = new Schema(
       type: String,
       unique: true,
       sparse: true,  // Allow unique null values
-    }
+    },
+    googleId: {
+      type: String,
+      unique: true,
+      sparse: true,  // Allow unique null values
+    },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   }
 );
+
 
 const User = model("User", userSchema);
 
