@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
 
 
 const userSchema = new Schema(
@@ -31,6 +32,10 @@ const userSchema = new Schema(
       unique: true,
       sparse: true,  // Allow unique null values
     },
+    ads: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Ad"
+    }
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

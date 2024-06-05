@@ -84,7 +84,8 @@ router.delete("/ads/:adId", isAuthenticated, isOwner, (req, res, next) => {
     });
 });
 
-// GET /users/ads/:userid
+//////////
+// GET /users/ads/:userId
 router.get("/users/ads/:userId", isAuthenticated, async (req, res, next) => {
   try {
     const { userId } = req.params;
@@ -93,7 +94,7 @@ router.get("/users/ads/:userId", isAuthenticated, async (req, res, next) => {
     }
 
     const ads = await Ad.find({ author: userId }).select(
-      "title description date adType imageUrl"
+      "businessIdea description investment adType requiredSkills"
     );
 
     res.json(ads);
@@ -101,5 +102,7 @@ router.get("/users/ads/:userId", isAuthenticated, async (req, res, next) => {
     next(error);
   }
 });
+
+
 
 module.exports = router;

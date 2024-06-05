@@ -17,8 +17,8 @@ router.get("/users/:id", isAuthenticated, (req, res, next) => {
                 email: user.email,
                 name: user.name,
                 username: user.username,
+                phoneNumber: user.phoneNumber,
                 about: user.about,
-                phoneNumber: user.phoneNumber
                 
             });
         })
@@ -50,6 +50,7 @@ router.delete("/users/:id", isAuthenticated, (req, res, next) => {
             next(error);
         });
 });
+
 
 module.exports = router;
 
