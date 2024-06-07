@@ -40,6 +40,9 @@ app.use("/", userRoutes);
 const adRoutes = require("./routes/ad.routes");
 app.use("/", adRoutes);
 
+const subscribeRoute = require("./routes/subscribe.route");
+app.use("/", subscribeRoute)
+
 // To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
