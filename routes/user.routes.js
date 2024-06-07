@@ -27,17 +27,22 @@ router.get("/users/:id", isAuthenticated, (req, res, next) => {
         });
 });
 
-// PUT /users/:userId - Update user by id
+// PUT /users/:id - Update user by id
 router.put("/users/:id", isAuthenticated, (req, res, next) => {
-    const { userId } = req.params;
-    User.findByIdAndUpdate(userId, req.body, { new: true })
+    const { id } = req.params; // Changed userId to id
+    User.findByIdAndUpdate(id, req.body, { new: true }) // Changed userId to id
         .then((updatedUser) => {
+            if (!updatedUser) {
+                return res.status(404).json({ message: "User not found" });
+            }
             res.json(updatedUser);
         })
         .catch((error) => {
             next(error);
         });
 });
+
+
 
 // DELETE /users/:userId - Delete user by id
 router.delete("/users/:id", isAuthenticated, (req, res, next) => {
