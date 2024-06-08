@@ -6,6 +6,13 @@ Finding a co-founder is one of the most difficult parts of the process. The goal
 
 This repository contains the code for the server-side of the application, built using Node.js, Express, and MongoDB.
 
+- Deployed live version: [Live demo](https://founder-finder.vercel.app/)
+
+- Deployed API: https://founder-finder-api.adaptable.app/
+
+- Frontend Repo: https://github.com/donxito/founder-finder-client
+
+
 ## Features
 
 - **User Authentication**: Users can sign up, log in, and log out securely.
