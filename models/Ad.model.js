@@ -30,6 +30,9 @@ const adSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  example: {
+    type: Boolean,
   }
 });
 
