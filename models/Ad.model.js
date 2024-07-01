@@ -36,7 +36,7 @@ const adSchema = new Schema({
   },
   category: {
     type: String,
-    enum: ["Art", "Culture", "Vestuary", "Food", "Health", "Sport", "Design","IT", "Finance", "Commerce", "Other", "Business", "Education", "Science", "Environment", "Children", "Travel"],
+    enum: ["Art", "Culture", "Vestuary", "Food", "Health", "Sport", "Design","IT", "Finance", "Commerce", "Other", "Business", "Education", "Science", "Environment", "Children", "Travel", "Media"],
   }
 });
 
