@@ -33,6 +33,10 @@ const adSchema = new Schema({
   },
   example: {
     type: Boolean,
+  },
+  category: {
+    type: String,
+    enum: ["Art", "Culture", "Vestuary", "Food", "Health", "Sport", "Design","IT", "Finance", "Commerce", "Other", "Business", "Education", "Science", "Environment", "Children", "Travel"],
   }
 });
 
