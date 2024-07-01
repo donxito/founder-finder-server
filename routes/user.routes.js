@@ -19,6 +19,7 @@ router.get("/users/:id", isAuthenticated, (req, res, next) => {
                 username: user.username,
                 phoneNumber: user.phoneNumber,
                 about: user.about,
+                avatar: user.avatar,
                 
             });
         })
