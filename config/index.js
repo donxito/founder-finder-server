@@ -29,8 +29,9 @@ module.exports = (app) => {
   // controls a very specific header to pass headers from the frontend
   app.use(
     cors({
-      origin: [FRONTEND_URL],
-      credentials: true // Allow credentials
+      origin: "https://founder-finder.vercel.app", // Allow specific origin
+      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
+      credentials: true, // Allow credentials (cookies, authorization headers, etc.)
     })
   );
 
